@@ -1,0 +1,24 @@
+# Babe Team's Jupyter Notebook
+##### Members: Gabby D'Haillecourt, Samantha Dibben, Margaret Draeker, and Marley Eisman
+## Project Overview
+Our group, the Babe Team, is exploring the Gompertz Model of Tumor Growth to predict tumor growth rates. This prediction is based on tumor cell images from Figure 1 (A) in [1] that were collected during an eight hour time frame. In order to complete this project, we brushed up on our image analysis skills using scipy and our parameter optimizing techniques (using scipy.optimize) from BIOL 300. Additionally, we took our model analysis skills learned so far from BIOL 301 to help us pick and interpret a tumor growth model.
+The main motivation behind chosing this project is how prominent cancer is in society. Cancer is one of the leading causes of death with approximately 1.9 million new cancer diagnoses per year in the United States alone. Of these 1.9 million cases, about 609,000 are expected to result in death, a mortality rate of 1,700 deaths per day [2]. Tracking tumor growth to create a specialized Gompertz model has a variety of applications in terms of preventing these deaths, as well as improving the quality of life for those affected by cancer.
+The tumor growth model we decided to use was the Gompertz Curve [3]. The equation and its differential equation are shown below:
+
+$$
+\begin{align}
+X(t) &= X(0) e^{\left( \ln \left(\frac{K}{X(0)} \right) \left(  1 - e^ \left( -\alpha t \right) \right) \right)} \\
+\dot{X}(t) &= \alpha \ln \left( \frac{K}{X(t)} \right) X(t)
+\end{align}
+$$
+# Median filtering code
+# Creating the median filter
+selem = skimage.morphology.square(3)
+t_360_im_filt = skimage.filters.median(t_360_im_base, selem)
+
+# Displaying to show subtle change
+fig, ax = plt.subplots(1, 2, figsize=(12,4))
+ax[0].imshow(t_360_im_filt)
+ax[0].set_title("Median Filtered")
+ax[1].imshow(t_360_im_base)
+ax[1].set_title("Original");
